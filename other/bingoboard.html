@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>
+
+        </title>
+    <style>
+        body{
+            display: grid;
+            grid-template-rows: 1fr auto;
+            justify-content: center;
+            margin: 0;
+            height: 100vh;
+            align-items: center;
+            background-color: #f0f0f0
+        }
+        .header{
+            display: flex;
+            width: 100%;
+            margin: auto;
+            justify-content: center;
+            font-family:'Segoe UI';
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #999;
+            border-radius: 3px;
+            background-color: #c8a2c8
+
+        }
+        .bingoboard {
+            display: grid;
+            grid-template-columns: repeat(5, 90px);
+            grid-template-rows: repeat(5,90px);
+            gap: 10px;
+            padding: 10px;
+            border: 2px solid #999;
+            border-radius: 3px;
+            margin-bottom: 10px;
+
+        }
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            width: 90px;
+            height: 90px;
+            border: 1px solid #999;
+            border-radius: 3px;
+            background-color: #e0e0e0;
+            white-space: normal;
+            text-align: center;
+            cursor: pointer;
+            font-family:'Segoe UI';
+            box-sizing: border-box;
+            padding: 5px;
+            user-select: none;
+        }
+        .cell.purple {
+            background-color: #c8a2c8;
+        }
+        .cell.orange {
+            background-color: #ffa500;
+        }
+        
+        .footer {
+           display: flex;
+           flex-wrap: nowrap;
+           margin: auto;
+        }
+        .buttonContainer {
+            display:flex;
+            justify-content: center;
+            gap:10px;
+        }
+        .playerSelect1 {
+            padding:10px;
+            margin-bottom: 10px;
+            background-color: #c8a2c8;
+            border: 1px solid #999;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .playerSelect2{
+            padding:10px;
+            margin-bottom: 10px;
+            background-color: #ffa500;
+            border: 1px solid #999;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .playerSelect1:hover {
+            background-color: #a38ba3
+        }
+        .playerSelect2:hover {
+            background-color: #bd7b00
+        }
+        .boardClear {
+            padding:10px;
+            margin-bottom: 10px;
+            background-color:#e0e0e0;
+            border: 1px solid #999;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="header">
+        <h1 class="title"> zelda bingo! </h1>
+        </div>
+        <div class="bingoboard">
+        </div>
+          <div class="buttonContainer">
+            <button class="playerSelect1" onclick="setPurple()">player 1</button>
+            <button class="playerSelect2" onclick="setOrange()">player 2</button>
+            <button class="boardClear" onclick="clearBoard()">clear board</button>
+            <button class="boardClear" onclick="generateGoals()">generate new goals</button>
+        </div>
+        <script>
+            const goals = [
+                "6 shrines", "8 shrines", "10 shrines", "12 shrines", "15 shrines",
+                "2 surface shrines", "3 surface shrines", "4 surface shrines",
+                "7 sky shrines", "8 sky shrines",
+                "defeat master kohga", "defeat master kohga twice",
+                "5 koroks", "10 koroks", "15 koroks", "20 koroks", "5 unique korok types",
+                "defeat a stone talus", "defeat a luminous talus", "defeat an igneo talus", "defeat a hinox",
+                "defeat a stalnox", "defeat 3 unique minibosses", "defeat a flux construct",
+                "defeat a frox", "defeat 4 unique minibosses", "defeat a lynel",
+                "tunic of the depths", "archaic warm greaves", "archaic legwear",
+                "full hylian set", "full royal guard set", "full soldier's set", "full stealth set", "yiga mask", "zonaite helm",
+                "miner's trousers", "1 evil spirit armor piece", "well-worn hair band", "champion's leathers",
+                "midna's helmet", "korok mask", "zora armor",
+                "2 cold resistance armor pieces", "1 charged armor piece", "2 glide armor pieces",
+                "10 armor pieces", "5 helmets", "5 pairs of pants", "2 full armor sets",
+                "4 towers", "5 towers", "6 towers", "7 towers",
+                "lindor's brow tower", "rospro pass tower", "hyrule field tower",
+                "mount lanayru tower", "popla foothills tower", 
+                "pikida stonegrove tower", "ulri mountain tower", "gerudo canyon tower",
+                "eldin canyon tower", "upland zorana tower",
+                "cook a pizza", "copious mushroom skewers", "copious seafood skewers", "copious meat skewers", "cook a dark meal",
+                "copious fried wild greens", "bake any cake", "noble pursuit", "15 unique meals", "20 unique meals", "obtain flame resistance",
+                "obtain shock resistance", "obtain stealth up", 
+                "5 lightroots", "6 lightroots", "7 lightroots", "8 lightroots", "10 lightroots", "4 shrine / lightroot pairs",
+                "obtain 2 old maps", "find an old map treasure",
+                "complete a minigame", "complete 2 unique minigames",
+                "take a selfie with a gleeok", "take a selfie with a dragon", "take a selfie with master kohga", "take a selfie with johamius tonson",
+		        "take a selfie with a frox", "take a selfie with a dog",
+                "4 paraglider fabrics", "nostalgic fabric",
+                "3 unique boko horns", "3 unique moblin horns", "3 unique lizalfos horns", "10 different horns", "5 unique miniboss drops",
+                "complete 1 colosseum", "complete 2 colosseums",
+                "5 wells", "8 wells", "10 wells", "15 wells", 
+                "4 side adventures", "6 side adventures", "4 side quests", "6 side quests", "the hunt for bubbul gems! SA",
+                "genli's home cooking side quest", "meat for meat side quest", "horse-drawn dreams side quest",
+                "cece's secret side adventure", "a call from the depths side adventure", "bring peace to necluda! SA", "bring peace to hyrule field! SA",
+		        "a letter to koyin side adventure", "hestu's concerns side adventure",
+                "1 fairy fountain", "dye a full set of armor", "destroy a gibdo hive", "recover tulin's bow", "obtain king's scale", "defeat yunobo", "find zelda's torch",
+                "complete 1 dungeon", "obtain the camera", "obtain autobuild",
+                "obtain dusk bow", "obtain hylian shield", "obtain 3 fire weapons", "obtain 3 ice weapons", "obtain 3 unique elemental weapons", "defeat a wizzrobe",
+                "defeat an enemy with a shield", "defeat an enemy with ultrahand", "upgrade a horse", "mount a stalhorse", "mount a bear", 
+                "game over from bees", "game over from lightning", "game over from cuccos", "burn to death", 
+                "1 sage's will", "4 addison signs", "5 addison signs",
+                "visit a colossal fossil", "visit a low gravity area", "visit a secret hot spring",
+                "50 arrows", "100 arrows", "3 unique eyeballs", "3 like like stones", "4 chuchu jellies", "all 5 rare ores",
+                "8 unique zonai devices", "10 unique zonai devices", "12 unique zonai devices",
+                "2 bargainer statues", "3 bargainer statues", "4 bargainer statues",
+            ]
+            const bingoBoard = document.querySelector('.bingoboard');
+            let activeColor= 'purple';
+
+            
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array [i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            function generateGoals() {
+                const shuffledgoals = [...goals];
+                shuffle(shuffledgoals)
+                bingoBoard.innerHTML = ''
+                shuffledgoals.slice(0, 25).forEach(name => {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.textContent = name;
+                    cell.onclick = () => {
+                        if(cell.classList.contains(activeColor)) {
+                        cell.classList.remove(activeColor)
+                        } else {
+                            cell.classList.remove('purple', 'orange');
+                            cell.classList.add(activeColor);
+                        }
+                    }
+                    bingoBoard.appendChild(cell);
+                })
+            }
+
+            generateGoals();
+
+            function setPurple() {
+                activeColor = 'purple'
+            }
+            function setOrange() {
+                activeColor = 'orange'
+            }
+            function clearBoard() {
+                document.querySelectorAll('.cell').forEach(cell => {
+                    cell.classList.remove('purple', 'orange');
+                });
+            }
+        </script>
+    </body>
+</html>

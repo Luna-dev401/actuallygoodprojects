@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Eco Revolution</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+            .title {
+                font-family: Poppins;
+                size: 45px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+        <h1 class="title">Hello <span id="userNameDisplay"></span>.</h1>
+        </div>
+    </body>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getDatabase, ref, get } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCbcaSi9iV98v1BtpdQ_ObbfIKE_ShHiG0",
+            authDomain: "dd-unit-3.firebaseapp.com",
+            databaseURL: "https://dd-unit-3-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "dd-unit-3",
+            storageBucket: "dd-unit-3.firebasestorage.app",
+            messagingSenderId: "482569899340",
+            appId: "1:482569899340:web:076f596ba18b69ee6013e9",
+            measurementId: "G-CXG2HT0ELQ"
+        };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        const userNameElement = document.getElementById('userNameDisplay');
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUserId = localStorage.getItem('currentUserId');
+            console.log('Read userId from local storage:', currentUserId);
+            if (currentUserId) {
+                console.log("Found ID in local storage:", currentUserId);
+                const readPath = 'users/' + currentUserId;
+                console.log("Attempting to read user path", readPath);
+                const userRef = ref(database, readPath);
+                console.log("Attempting to read from path ref", userRef.toString());
+                get(userRef)
+                    .then((snapshot) => {
+                        if(snapshot.exists()) {
+                            console.log("Snapshot exists. Data found")
+                            const userData = snapshot.val();
+                            const username = userData.name;
+                            console.log('Fetched username:', username);
+                            userNameElement.textContent = username;
+                        } else {
+                            console.log("No user data found in database for ID.");
+                            userNameElement.textContent = 'UserNotFound';
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Full error object:", error)
+                        userNameElement.textContent = 'Error'
+                    });
+                } else {
+                    console.log('No current user found in local storage');
+                    alert ('Please log in.')
+                    window.location.href = 'diatech.html';
+                }
+            });
+    </script>
+</html>

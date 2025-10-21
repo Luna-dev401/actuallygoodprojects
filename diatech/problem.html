@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Eco Revolution</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+            header{
+    width: 100%;
+    display: flex;
+}
+body{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+    max-width: 100%;
+}
+.body{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(diatechassets/factoryburning.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    border-bottom: 3px solid #000;
+}
+.fade{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 2s forwards;
+    z-index: 3;
+    pointer-events: none;
+}
+@keyframes fadeIn {
+    0% {
+    background-color: black;
+    color: transparent;
+}
+    100% {
+    background-color: transparent;
+    color: white;
+}
+}
+.horizontal-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex: 1;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color: #000000; 
+    opacity: 75%;
+    top: 0;
+    position: fixed;
+}
+.hover-item{
+    transition: font-size 0.2s;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.hover-item:hover{
+    font-size: 22px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    font-weight: 200
+}
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+a:link{
+    color:white;
+    text-decoration: none;
+}
+a:visited{
+    color:white;
+    text-decoration: none;
+}
+.title-container{
+    width: 100%;
+    text-wrap: wrap;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+.title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 60px;
+    color: #fff;
+    margin-left: 16vh;
+    margin-bottom: 15vh;
+    line-height: 100px;
+}
+.text-container {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    padding: 10px 30px;
+    background-color: rgba(50, 50, 50, 0.5);
+    color: white;
+    margin-left: 16vh;
+    border-radius: 10px;
+    width: 850px;
+    margin-bottom: 24vh;
+    font-size: 16px;
+}
+.text-container-2{
+    display: flex;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    padding: 10px 30px;
+    background-color: #f8f7f2;
+    border-bottom: 3px solid #000;
+}
+.midsection{
+    display: flex;
+    flex-direction: column;
+   
+}
+.midsection div {
+    animation:fadeInImg;
+    animation-timeline: view();
+}
+.midsection img {
+    min-width: 50vh;
+    max-height: 300px;
+    border: 3px solid #999;
+    border-radius: 10px;
+}
+@keyframes fadeInImg{
+    0% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+}
+.earth-container {
+    display: flex;
+    background-color: #efefef;
+    font-family: Poppins;
+    width: 100%;
+}
+.earth-container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 30px;
+    font-weight: 700;
+    width: 33.3333333333vh;
+}
+.text-container-3{
+    display: flex;
+    flex-direction: column;
+}
+.text-container-3 p {
+    margin: 0;
+    font-size: 30px;
+    animation: flyInText;
+    animation-timeline: view();
+}
+@keyframes flyInText {
+    0%{
+        transform:translate(200px);
+    }
+    100%{
+        transform: translate(0px);
+    }
+}
+.bottom {
+    display: flex;
+    font-family: Poppins;
+    justify-content: center;
+    color: white;
+    background-image: linear-gradient(
+        to right top,
+        #003300,
+        #006600,
+        #00aa00,
+        #00cc00,
+        #00ff00,
+        #ffffff
+    )
+}
+.bottom h2 {
+    font-size: 30px;
+    cursor: pointer;
+}
+.footer{
+    display: flex;
+    padding: 50px 15%;
+    color: #efefef;
+    font-family: Poppins;
+    font-weight: 200;
+    background-image: linear-gradient(
+        to right top,
+        #1a1a1a,
+        #2b2b2b,
+        #3c3c3c,
+        #2b2b2b, 
+        #1a1a1a
+    )
+}
+.footer div{
+    text-align: center;
+}
+.col2{
+    flex-grow: 2;
+}
+.footer div h3{
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+.footer div h4{
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.col2 form input{
+    width: 400px;
+    height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    font-family: Poppins;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+}
+.col2 form button{
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 70px;
+    font-family: Poppins;
+    font-weight: 200;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.social-icons i{
+    font-size: 22px;
+    margin: 10px;
+    cursor: pointer;
+}
+</style>
+</style>
+    </head>
+    <body>
+        <div class="body">
+            <div class="fade" id="div"></div>
+        <header>
+            <ul class="horizontal-list poppins-thin">
+    
+                <a class="hover-item left" href="diatech.html">Home Page</a>
+                <a class="hover-item" href="solutions.html">Current Solutions</a>
+                <a class="hover-item" href="futuretech.html">Future Technologies</a>
+            </ul>
+        </header>
+        <div class="title-container">
+            <h1 class="title">Climate Change is a Problem.</h1>
+        
+        <div class="text-container">
+            <p class="paragraph">When greenhouse gas emissions are released into the atmosphere, 
+                they trap the suns heat which leads to climate change. Climate change is the gradual 
+                increase in the temperature of the earth, generally caused by the greenhouse affect, 
+                which is due to the increased levels of carbon dioxide and other pollutants. This
+            rise in temperatures has the potential to get much worse in the future, so we must act now.</p>
+            </div>
+        </div>
+    </div>
+    <div class="midsection">
+        <div class="text-container-2">
+            <div>
+                <h3>Why are there so many CO2 emissions?</h3>
+                <p>A significant amount of the world's emissions are produced by burning fossil fuels like
+                coal, oil, and natural gas to generate heat and power. Only about 30% of electricity is
+                generated from renewable sources like wind and solar. The majority of electricity is still
+                generated from fossil fuels. And nearly 90% of all carbon dioxide emissions are from fossil 
+                fuels. Manufacturing and industry produce emissions, mostly from burning fossil fuels to
+                produce energy for making things like cement, iron, steel, electronics, plastics, clothes
+                and other goods. Mining and other industrial processes also release gases.</p>
+            </div>
+            <img src="https://iea.imgix.net/69f767b9-6676-4345-a1ea-9dc410ae5990/GettyImages-1303511343.png?auto=compress%2Cformat&fit=min&q=80&rect=0%2C0%2C3991%2C2245&w=1220&h=686&fit=crop&fm=jpg&q=70&auto=format">
+        </div>
+        <div class="text-container-2">
+            <div>
+                <h3>The Impact of Deforestation</h3>
+                <p> Cutting down forests to create farms or pastures, or for other reasons, causes emissions,
+                    since trees, when they are cut, release the carbon they have been storing. Since forests
+                    absorb carbon dioxide, destroying them also limits nature’s ability to keep emissions out
+                    of the atmosphere.
+                </p>
+            </div>
+            <img src="diatechassets/deforestation.jpg">
+        </div>
+        <div class="text-container-2">
+            <div>
+                <h3>Climate Change Causes Problems</h3>
+                <p>From disrupted migration cycles, siginificant heat stress, increased precipitation, higher
+                    risk of droughts and heatwaves, rising sea levels due to melting sea ice, and a plethora of
+                    other problems, there is no doubt that climate change can have enormous negative impacts on
+                    our planet and its ecosystems. Our society has been designed to be powered by fossil fuels for
+                    the past several centuries - now, with the threat of climate change's impacts already coming
+                    on the horizon, we must adapt and ensure our homes and our lives are created, powered and
+                    continued sustainably.</p>
+            </div>
+            <img src="diatechassets/landfill.jpg">
+        </div>
+    </div>
+        <div class="bottom">
+            <a><h2>Learn More</h2></a>
+        </div>
+        <footer class="footer">
+            <div class="col1">
+                <h3>ABOUT US</h3>
+                <h4>Website by:</h4>
+                <p>Richard Koval</p>
+                <h4>Design by:</h4>
+                <p>Sophia Zakhem <br>Rina Kang</p>
+            </div>
+            <div class="col2">
+                <h3>SIGN UP!</h3>
+                <form>
+                    <input type="text" placeholder="Name" id="nameField">
+                    <br>
+                    <input type="email" placeholder="Email Address" required id="emailField">
+                    <br>
+                    <button type="button" id="submitButton" onclick="redirect()">Sign Up</button>
+                </form>
+            </div>
+            <div class="col3">
+                <h3>CONTACT</h3>
+                <p>+971 50 452 3680 <br> dia14083@diaestudents.com <br> dia14183@diaestudents.com</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@RKalphaaa"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="mailto:dia14083@diaestudents.com"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://www.discordapp.com/users/1095658053120053310"><i class="fa-brands fa-discord"></i>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script>
+        function redirect() {
+            window.location.href="diatech.html"
+        }
+    </script>
+</html>

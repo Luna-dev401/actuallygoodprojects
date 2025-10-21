@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Eco Revolution</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+            header{
+    width: 100%;
+    display: flex;
+}
+body{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+    max-width: 100%;
+}
+.body{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(diatechassets/wind\ turbine.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    border-bottom: 3px solid #000;
+}
+.fade{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 2s forwards;
+    z-index: 3;
+    pointer-events: none;
+}
+@keyframes fadeIn {
+    0% {
+    background-color: black;
+    color: transparent;
+}
+    100% {
+    background-color: transparent;
+    color: white;
+}
+}
+.horizontal-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex: 1;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color: #000000; 
+    opacity: 75%;
+    top: 0;
+    position: fixed;
+}
+.hover-item{
+    transition: font-size 0.2s;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.hover-item:hover{
+    font-size: 22px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    font-weight: 200
+}
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+a:link{
+    color:white;
+    text-decoration: none;
+}
+a:visited{
+    color:white;
+    text-decoration: none;
+}
+.title-container{
+    width: 100%;
+    text-wrap: wrap;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+.title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 60px;
+    color: #fff;
+    margin-left: 16vh;
+    margin-bottom: 15vh;
+    line-height: 100px;
+}
+.text-container {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    padding: 10px 30px;
+    background-color: rgba(50, 50, 50, 0.5);
+    color: white;
+    margin-left: 16vh;
+    border-radius: 10px;
+    width: 850px;
+    margin-bottom: 8.5vh;
+    font-size: 16px;
+}
+.text-container-2{
+    display: flex;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    padding: 10px 30px;
+    background-color: #f8f7f2;
+    border-bottom: 3px solid #000;
+}
+.midsection{
+    display: flex;
+    flex-direction: column;
+   
+}
+.midsection div {
+    animation:fadeInImg;
+    animation-timeline: view();
+}
+.midsection img:not(.earth-gif) {
+    min-width: 50vh;
+    max-height: 300px;
+    border: 3px solid #999;
+    border-radius: 10px;
+}
+@keyframes fadeInImg{
+    0% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+}
+.earth-container {
+    display: flex;
+    background-color: #efefef;
+    font-family: Poppins;
+    width: 100%;
+}
+.earth-container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 30px;
+    font-weight: 700;
+    width: 33.3333333333vh;
+}
+.text-container-3{
+    display: flex;
+    flex-direction: column;
+}
+.text-container-3 p {
+    margin: 0;
+    font-size: 30px;
+    animation: flyInText;
+    animation-timeline: view();
+}
+@keyframes flyInText {
+    0%{
+        transform:translate(200px);
+    }
+    100%{
+        transform: translate(0px);
+    }
+}
+.footer{
+    display: flex;
+    padding: 50px 15%;
+    color: #efefef;
+    font-family: Poppins;
+    font-weight: 200;
+    background-image: linear-gradient(
+        to right top,
+        #1a1a1a,
+        #2b2b2b,
+        #3c3c3c,
+        #2b2b2b, 
+        #1a1a1a
+    )
+}
+.footer div{
+    text-align: center;
+}
+.col2{
+    flex-grow: 2;
+}
+.footer div h3{
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+.footer div h4{
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.col2 form input{
+    width: 400px;
+    height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    font-family: Poppins;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+}
+.col2 form button{
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 70px;
+    font-family: Poppins;
+    font-weight: 200;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.social-icons i{
+    font-size: 22px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+</style>
+    </head>
+    <body>
+        <div class="body">
+            <div class="fade" id="div"></div>
+        <header>
+            <ul class="horizontal-list poppins-thin">
+    
+                <a class="hover-item left" href="diatech.html">Home Page</a>
+                <a class="hover-item" href="problem.html">The Problem</a>
+                <a class="hover-item" href="futuretech.html">Future Technologies</a>
+            </ul>
+        </header>
+        <div class="title-container">
+            <h1 class="title">The Solutions We Have</h1>
+        
+        <div class="text-container">
+            <p>
+                <h4>While it may be easy to lose hope, we already have plenty of solutions available
+                to us. These include: <br> <br> </h4>
+                •	Reduce usage of fossil fuels <br>
+                •	Invest in renewable energy <br>
+                •	Switch to sustainable transport <br>
+                •	Improve farming and encourage vegan diets <br>
+                •	Restore nature to absorb more carbon <br>
+                •	Protect forests like the Amazon
+                </p>
+            </div>
+        </div>
+    </div>
+        <div class="midsection">
+            <div class="text-container-2">
+                <div>
+                    <h3>Renewable Energy</h3>
+                    <p>Renewable energy refers to various types of energy which can be infinitely renewed.
+                    Unlike coal, oil and natural gas, renewable energy will never run out, and almost all
+                    renewables are completely carbon-free, causing little to no harm to the environment.
+                    Renewable energy is becoming cheaper and cheaper, and with its low maintenance cost it has become
+                    even more money-efficient than non-renewable energies such as fossil fuels.
+                    </p>
+                </div>
+                <img src="diatechassets/background-image-1.png">
+            </div>
+            <div class="text-container-2">
+                <div>
+                    <h3>Sustainable Transport</h3>
+                    <p>Electric cars and public transport are already becoming far more popular across the world.
+                    The EU has promised to stop selling petrol cars by 2030, and in China, more than 50% of the cars
+                    sold last year were electric. Public transport such as buses and trains can also help a lot in 
+                    reducing emission density, bringing many people to where they need to go with the emissions of 
+                    only one vehicle.
+                    </p>
+                </div>
+                <img src="diatechassets/electricvehicle.jpg">
+            </div>
+            <div class="text-container-2">
+                <div>
+                    <h3>Sustainable Diets</h3>
+                    <p>Vegan and vegetarian diets are far less harmful to the environment than meat-based diets. Animals
+                    produce methane, another harmful greenhouse gas which warms the planet, while plants take in carbon dioxide
+                    and reduce its concentration in the atmosphere. Many people around the world are switching to vegan and
+                    plant-based diets not just for the health benefits but also for a better environmental impact.
+                    </p>
+                </div>
+                <img src="diatechassets/vegan-food.jpg">
+            </div>
+            <div class="text-container-2">
+                <div>
+                    <h3>Restoration and Conservation</h3>
+                    <p>Regrowing destroyed forests and protecting endangered animals from the impacts of climate change can help preserve our
+                    priceless nature for the future. Climate change is a big threat for many species of animals, and deforestation
+                    and habitat loss just compound the threat. Conservation initiatives and reforestation are taking place all over
+                    the world, hopefully helping threatened species survive.
+                    </p>
+                </div>
+                <img src="diatechassets/blue-whale.jpg">
+            </div>
+            <div class="earth-container">
+                <div>
+                    <p>Let's protect<br>the planet</p>
+                    </div>
+                <img class="earth-gif" src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rotating_earth_animated_transparent.gif">
+                <div class="text-container-3">
+                    <p>T</p>
+                    <p>o</p>
+                    <p>g</p>
+                    <p>e</p>
+                    <p>t</p>
+                    <p>h</p>
+                    <p>e</p>
+                    <p>r</p>
+                    <p>!</p>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="col1">
+                <h3>ABOUT US</h3>
+                <h4>Website by:</h4>
+                <p>Richard Koval</p>
+                <h4>Design by:</h4>
+                <p>Sophia Zakhem <br>Rina Kang</p>
+            </div>
+            <div class="col2">
+                <h3>SIGN UP!</h3>
+                <form>
+                    <input type="text" placeholder="Name" id="nameField">
+                    <br>
+                    <input type="email" placeholder="Email Address" required id="emailField">
+                    <br>
+                    <button type="button" id="submitButton" onclick="redirect()">Sign Up</button>
+                </form>
+            </div>
+            <div class="col3">
+                <h3>CONTACT</h3>
+                <p>+971 50 452 3680 <br> dia14083@diaestudents.com <br> dia14183@diaestudents.com</p>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@RKalphaaa"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="mailto:dia14083@diaestudents.com"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://www.discordapp.com/users/1095658053120053310"><i class="fa-brands fa-discord"></i>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script>
+        function redirect() {
+            window.location.href="diatech.html"
+        }
+    </script>
+</html>

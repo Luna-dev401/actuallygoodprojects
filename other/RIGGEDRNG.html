@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+
+<title> The Website of Destiny</title>
+
+<style>
+
+        body{
+            background-color: #ff00ee;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+        }
+        footer{
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .footer-content p {
+            margin: 0;
+            font-size: 14px;
+        }
+        .box{
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+            width: 60%;
+            border: 3px solid #ffffff;
+            padding: 10px;
+        }
+        .box2{
+            margin: auto;
+            margin-top: 10px;
+            width: 100%
+        }
+        .paragraph{
+            margin: auto;
+            width: 60%;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            color:#ffffff
+        }
+        .paragraph2{
+            margin: auto;
+            margin-bottom: 5px;
+            width: 60%;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            font-size:large;
+            font-weight:bold
+        }
+        .name-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; 
+            justify-content: center;
+            margin: auto;
+            margin-bottom: 200px;
+            width: 100%;
+            font-family: 'Lucida Sans';
+            text-align: center;
+            font-size:50px;
+            font-weight:bold
+        }
+
+        .name-item {
+            padding: 5px 10px; 
+            background-color: #f0f0f0; 
+            border-radius: 5px; 
+            border: 1px solid #ccc;
+            
+         }
+        
+    </style>
+</head>
+
+<body id="body">
+
+    <div class="box">
+    <h1 id="title" class="paragraph">The Website of Destiny</h1>
+    <br>
+    <p id="descriptor" class="paragraph">Click the button to generate a random name.</p>
+    <br> <br>
+    <button class="paragraph2" id="generateNamesBtn" onclick="clearInputField()">GENERATE</button>
+    <form id="myForm">
+        <select id="categories" class="paragraph2">
+        <option value = 'All'>All</option>
+        <option value = 'Year 10'>Year 10</option>
+        <option value = 'Year 8'>Year 8</option>
+        <option value = 'Children'>Children</option>
+        <option value = 'Adults and Teachers'>Adults and Teachers</option>
+        <option value = 'Famous People'>Famous People</option>
+        <option value = 'Pets, Plushies and Fictional Characters'>Pets, Plushies and Fictional Characters</option>
+        </select>
+    </form>
+     <input type="number" id="nameCount" value="2" min="1" max="1000" class="paragraph2">
+    </div>
+    <div class="box2" id="winnersDisplay">
+    <p class="paragraph2" id="winners">The winners are:</p>
+    </div>
+    <div class="name-container" id="nameDisplay"></div>
+
+    <footer>
+        <div class="footer-content">
+          <p>&copy; 2025 DI@TECH. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const year10 = [
+            "Ali", "Yuvraj", "Sara", "Vritti", "James", "Hridaan", "Teresa", "Garyan Oyal", "Rick Astley", "Rina", 
+            "Sohaib", "Yuna", "Julieta", "Emma", "George", "Robin", "Andrija", "Kayra", "Lucas", "Maya"
+        ] 
+        const year8 = [
+            "Ariana", "Irene", "Laura", "Maanav", "Yanik", "Aditya", "Tomas", "Emmanuel", "Jiyoo", "Eve", "Anna", 
+            "Melissa", "Eva", "Zara", "Abhivir", "Arta", "Joaquin", "Salvador", "Stelli", "Thea", "Naksh", "Vihaan", 
+            "Aarav"
+        ] 
+        const children = year10.concat(year8)
+        
+        const adults = [
+            "Galia", "Mary-Ann", "Ms. Aparna", "Ms. Rehab", "Dwayne Johnson", "Mr. Hitesh", "Ms. Dsouza", "Nagyka", 
+            "Ms. Agacy", "Ms. Luman", "Saraswathy Thiruvilwamala Ramswamy", "Mom"
+        ]
+        const fictional = [
+            "Bruno", "The Lorax",  "Alfred", "Dave", "Sara & Dwayne", "Jerry Stalin",  "Cica", "Tarkabarka", "Vorike", 
+            "Yuvraj Turtle", "Sara Turtle", "Rajul", "Kiki", "A Chicken", "Murko", "Barry Benson", "Shrek", "Donkey", 
+            "Lord Farquaad", "Patricia", "Jonathan", "John Drachenhöfdörfer-Schleichersteinberg", "Thanos von Hasareeler", 
+            "Harry Patel", "Lord Voldemort", "Mario", "Bowser", "Georgie"
+        ]
+        const famous = [
+            "Donald J. Trump", "Vladimir Putin", "Kim Jong-Un", "Elon Musk", "Jeff Bezos", "The Mona Lisa", 
+            "Sergei Rachmaninov", "Wolfgang Amadeus Mozart", "Julius Caesar", "Napoleon", "Queen Elizabeth II", 
+            "Joe Biden", "Taylor Swift", "Queen Victoria", "Adolf Hitler", "Lady Gaga", "Vladimir Lenin", 
+            "Joseph Stalin", "Ed She Ran"
+        ]
+        const all = year10.concat(year8, adults, fictional, famous)
+
+        const generateNamesBtn = document.getElementById('generateNamesBtn');
+        const nameDisplay = document.getElementById('nameDisplay');
+        const nameCountInput = document.getElementById('nameCount');
+        const winnersDisplay = document.getElementById('winnersDisplay')
+        const categories = document.getElementById('categories')
+        const title = document.getElementById('title');
+        const descriptor = document.getElementById('descriptor')
+        let names = ''
+
+        generateNamesBtn.addEventListener('click', generateRandomNames);
+        categories.addEventListener('change', update);
+
+        function update() {
+            const selectedvalue = categories.value;
+            if (selectedvalue == 'All') {
+                names = all;
+                document.body.style.backgroundColor = '#ff00ee'
+                title.style.color = "white"
+                descriptor.style.color = "white"
+                descriptor.innerHTML = "Everyone. All the madness together."
+            } else if (selectedvalue == 'Year 10') {
+                names = year10;
+                document.body.style.backgroundColor = "orange"
+                title.style.color = "white"
+                descriptor.style.color = "white"
+                descriptor.innerHTML = "The zest is off the charts."
+            } else if (selectedvalue == 'Year 8') {
+                names = year8;
+                document.body.style.backgroundColor = "red"
+                title.style.color = "white"
+                descriptor.style.color = "white"
+                descriptor.innerHTML = "Children old enough for dating but young enough for brainrot."
+            } else if (selectedvalue == 'Children') {
+                names = children;
+                document.body.style.backgroundColor = "gold"
+                title.style.color = "black"
+                descriptor.style.color = "black"
+                descriptor.innerHTML = "Fifty annoying brats now in a random generator."
+            } else if (selectedvalue == 'Adults and Teachers') {
+                names = adults;
+                document.body.style.backgroundColor = "darkgreen"
+                title.style.color = "white"
+                descriptor.style.color = "white"
+                descriptor.innerHTML = "Finally, some consenting adults."
+            } else if (selectedvalue == 'Famous People') {
+                names = famous
+                descriptor.innerHTML = "Wanna make Trump and Napoleon have an affair? Well now you can."
+                document.body.style.backgroundColor = "blue"
+                title.style.color = "white"
+                descriptor.style.color = "white"
+            } else if (selectedvalue == 'Pets, Plushies and Fictional Characters') {
+                names = fictional;
+                document.body.style.backgroundColor = "#af69ee"
+                title.style.color = "white"
+                descriptor.style.color = "white"
+                descriptor.innerHTML = "You can only fall in love with these people in your dreams..."
+            }
+        }
+
+        update();
+
+        function generateRandomNames() {
+            const count = parseInt(nameCountInput.value) || 1;
+            nameDisplay.innerHTML = ''; 
+            if (count > names.length) {
+                nameDisplay.textContent = 'Cannot select more names than available!';
+                return;
+            }
+            const randomNames = getRandomNames(count);
+            randomNames.forEach(name => {
+            const nameElement = document.createElement('div');
+            nameElement.textContent = name;
+            nameElement.classList.add('name-item')
+            nameDisplay.appendChild(nameElement);
+            });
+        }
+
+        function getRandomName(availableNames) {
+            const randomIndex = Math.floor(Math.random() * availableNames.length);
+            return availableNames[randomIndex];
+        }
+
+        function getRandomNames(count) {
+            const availableNames = [...names];
+            const randomNames = [];
+
+            for (let i = 0; i < count; i++) {
+                const name = getRandomName(availableNames);
+                randomNames.push(name);
+                availableNames.splice(availableNames.indexOf(name), 1);
+            }
+        return randomNames;
+        }   
+    </script>
+</body>
+</html>

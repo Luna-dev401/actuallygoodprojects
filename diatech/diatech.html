@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Eco Revolution</title>
+            <script src="https://kit.fontawesome.com/2df02ebca9.js" crossorigin="anonymous"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+header{
+    width: 100%;
+    display: flex;
+}
+body{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+}
+.body{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(diatechassets/earth\ background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+}
+.fade{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 2s forwards;
+    z-index: 3;
+    pointer-events: none;
+}
+@keyframes fadeIn {
+    0% {
+    background-color: black;
+    color: transparent;
+}
+    100% {
+    background-color: transparent;
+    color: white;
+}
+}
+.horizontal-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex: 1;
+    color: #FFFFFF;
+    font-size: 20px;
+    background-color: #000000;
+    opacity: 75%;
+    top: 0;
+    position: fixed;
+}
+.hover-item{
+    transition: font-size 0.2s;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.hover-item:hover{
+    font-size: 22px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    font-weight: 200
+}
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+.title-container{
+    width: 1000px;
+    text-wrap: wrap;
+    margin-top: 100px;
+}
+.text-container{
+    width: 575px;
+    text-wrap: wrap;
+    background-color: rgba(50, 50, 50, 0.5);
+    margin-left: 16vh;
+    border-radius: 10px;
+    margin-bottom: 21.5vh;
+}
+.title {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 80px;
+    color: #fff;
+    margin-left: 16vh;
+    line-height: 100px;
+}
+.paragraph {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+a:link{
+    color:white;
+    text-decoration: none;
+}
+a:visited{
+    color:white;
+    text-decoration: none;
+}
+.footer{
+    display: flex;
+    padding: 50px 15%;
+    color: #efefef;
+    font-family: Poppins;
+    font-weight: 200;
+    background-image: linear-gradient(
+        to right top,
+        #1a1a1a,
+        #2b2b2b,
+        #3c3c3c,
+        #2b2b2b, 
+        #1a1a1a
+    )
+}
+.footer div{
+    text-align: center;
+}
+.col2{
+    flex-grow: 2;
+}
+.footer div h3{
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+.footer div h4{
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.col2 form input{
+    width: 400px;
+    height: 45px;
+    border-radius: 4px;
+    text-align: center;
+    font-family: Poppins;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+}
+.col2 form button{
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 70px;
+    font-family: Poppins;
+    font-weight: 200;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.social-icons i{
+    font-size: 22px;
+    margin: 10px;
+    cursor: pointer;
+}
+        </style>
+    </head>
+    <body>
+    <div class="body">
+        <div class="fade" id="div"></div>
+    <header>
+        <ul class="horizontal-list poppins-thin">
+
+            <a class="hover-item left" href="problem.html">The Problem</a>
+            <a class="hover-item" href="solutions.html">Current Solutions</a>
+            <a class="hover-item" href="futuretech.html">Future Technologies</a>
+        </ul>
+    </header>
+    <div class="title-container">
+        <h1 class="title">The world is changing.</h1>
+    </div>
+    <div class="text-container">
+        <p class="paragraph">Humans have come a long way when it comes to evolution and innovation. 
+            But they also cause a lot of problems on the way. One of those problems being climate change. 
+            Learn more about what caused climate change, what solutions already exist to help prevent it, 
+            what action you can take, and future technologies to help us with our situation.</p>
+    </div>
+    </div>
+    <footer class="footer">
+        <div class="col1">
+            <h3>ABOUT US</h3>
+            <h4>Website by:</h4>
+            <p>Richard Koval</p>
+            <h4>Design by:</h4>
+            <p>Sophia Zakhem <br>Rina Kang</p>
+        </div>
+        <div class="col2">
+            <h3>SIGN UP!</h3>
+            <form>
+                <input type="text" placeholder="Name" id="nameField">
+                <br>
+                <input type="email" placeholder="Email Address" required id="emailField">
+                <br>
+                <button type="button" id="submitButton" onclick="addUser()">Sign Up</button>
+            </form>
+        </div>
+        <div class="col3">
+            <h3>CONTACT</h3>
+            <p>+971 50 452 3680 <br> dia14083@diaestudents.com <br> dia14183@diaestudents.com</p>
+            <div class="social-icons">
+                <a href="https://www.youtube.com/@RKalphaaa"><i class="fa-brands fa-youtube"></i></a>
+                <a href="mailto:dia14083@diaestudents.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.discordapp.com/users/1095658053120053310"><i class="fa-brands fa-discord"></i>
+            </div>
+        </div>
+    </footer>
+    </body>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getDatabase, ref, push, set } from 'https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCbcaSi9iV98v1BtpdQ_ObbfIKE_ShHiG0",
+            authDomain: "dd-unit-3.firebaseapp.com",
+            databaseURL: "https://dd-unit-3-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "dd-unit-3",
+            storageBucket: "dd-unit-3.firebasestorage.app",
+            messagingSenderId: "482569899340",
+            appId: "1:482569899340:web:076f596ba18b69ee6013e9",
+            measurementId: "G-CXG2HT0ELQ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        export { database }
+
+        window.addUser = function() {
+            const nameField = document.getElementById('nameField');
+            const emailField = document.getElementById('emailField');
+            const userName = nameField.value;
+            const userEmail = emailField.value;
+
+            if (!userName || !userEmail) {
+                alert('Name and email are required.');
+                return;
+            }
+            if (!userEmail.includes('@')) {
+                alert('Invalid email address.');
+                return;
+            }
+            const newUser = {
+                name: userName,
+                email: userEmail
+            }
+
+            const usersRef = ref(database, '/users');
+            const newUserRef = push(usersRef); 
+            const userId = newUserRef.key; 
+            console.log("Generated userId");
+
+            const savePath = `/users/${userId}`;
+            console.log ("Saving data to path:", savePath);
+
+            set(ref(database, savePath), newUser)
+            .then(() => {
+            console.log('New user added successfully.');
+            nameField.value = '';
+            emailField.value = '';
+            alert("New user added successfully. Welcome " + userName + "!");
+            const currentUserId = 
+            localStorage.setItem('currentUserId', userId);
+            console.log("Saved user", savePath, "to Local Storage");
+            })
+            .catch((error) => {
+                console.error('Error: ', error);
+            })
+        }
+    </script>
+</html>
